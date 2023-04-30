@@ -248,7 +248,7 @@ void LinkedList::push_back(int nameNode) {
 void LinkedList::writeToFileFromHead() {
     FILE* flog=fopen("result_task6H.txt","w");
     Node* temp=Head;
-    for (int i = 0; i <Node::countNodes-1; ++i) {
+    for (int i = 0; temp!= nullptr; ++i) {
         fprintf(flog,"%d\t%d\n",i,temp->nameNode);
         temp=temp->next;
     }
@@ -257,36 +257,39 @@ void LinkedList::writeToFileFromHead() {
 
 void LinkedList::writeToFileFromTail() {
     FILE* flog=fopen("result_task6T.txt","w");
-    Node* temp=Tail->prev;
-    for (int i = Node::countNodes-1; i >=0 ; i--) {
+    Node* temp=Tail;
+    int i=0;
+    while (temp!= nullptr) {
         fprintf(flog,"%d\t%d\n",i,temp->nameNode);
         temp=temp->prev;
+        i++;
     }
 }
 
 void LinkedList::insert(int nameNode, int position) {
     if(position>0) {
-        Node *temp = new Node();
-        temp->nameNode = nameNode;
-        Node *ukaz = Head;
-        for (int i = 0; i < position - 1; ++i) {
-            ukaz = ukaz->next;
+       Node* temp =new Node();
+       Node* sec_temp=Head;
+        for (int i = 0; i < position-1; ++i) {
+            sec_temp=sec_temp->next;
         }
-        temp->next = ukaz->next;
-        temp->prev = ukaz;
-        ukaz->next->prev = temp;
-        Node::countNodes++;
+        temp->next=sec_temp->next;
+        temp->prev=sec_temp;
+        sec_temp->nameNode=nameNode;
+        sec_temp->next=temp;
     }
-    else
-        if(position==0){
-            Node* temp=new Node();
-            temp->nameNode=nameNode;
-            Head->prev=temp;
-            temp->next=Head;
-            Head=temp;
-            temp->prev= nullptr;
+    else {
+        if (position == 0) {
+            Node *temp = new Node();
+            Node *buff=Head;
+            temp->nameNode = nameNode;
+            temp->next = Head;
+            Head = temp;
+            temp->prev=buff;
+            Head->prev = nullptr;
             Node::countNodes++;
         }
+    }
 }
 LinkedList::~LinkedList() {
 
@@ -364,4 +367,5 @@ void StudentInfo::printInfoStudent(bool writeFile) {
         }
     }
 }
+void StudentInfo::writeAllInfoToFile(){}
 
