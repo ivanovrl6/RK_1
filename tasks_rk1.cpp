@@ -109,8 +109,8 @@ void buildTree(int height){
 
  char* convertDecToBin(int number){
     char* string = new char [33];
-     for (int i = 0; i <33 ; ++i) {
-            string[i]='0'                                                                                                                                           ;
+     for (int i = 0; i < 33 ; ++i) {
+            string[i]='0';                                                                                                                                           ;
      }
      string[32]='\0';
      if(number>=0) {
