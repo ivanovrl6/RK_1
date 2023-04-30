@@ -10,6 +10,7 @@ int main(){
         float arr [10][20];
         std::vector<std::pair<int,float>> test = averStr2DArray(arr[0],10,20);
         WorkWithFile first;
+        first.writeStatInfoToFile("sourcefile_task1.txt");
         LinkedList test1;
         for (int i = 0; i < 8; ++i) {
             test1.push_back(i);

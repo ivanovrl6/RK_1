@@ -24,6 +24,7 @@ private :
 public :
     WorkWithFile();
     ~WorkWithFile();
+    void writeStatInfoToFile(const char* outFile);
 };
 struct Node  {
     Node* next;

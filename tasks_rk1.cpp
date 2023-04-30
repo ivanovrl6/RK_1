@@ -21,6 +21,9 @@ void WorkWithFile::readFromFile(const char *fileName) {
 WorkWithFile::WorkWithFile() {
     prepareTestFile("sourceFile_task1.txt");
     readFromFile("sourceFile_task1.txt");
+}
+
+void WorkWithFile::writeStatInfoToFile(const char *outFile) {
     std::map<char,int> result={{'0',0}, {'!',0},
                                {'"',0},{'#',0},
                                {'$',0},{'%',0},
@@ -77,7 +80,7 @@ WorkWithFile::WorkWithFile() {
             }
         }
     }
-    FILE* work=fopen("sourceFile_task1.txt","a");
+    FILE* work=fopen(outFile,"a");
     for (auto iter=result.begin();iter!= result.end();iter++) {
         if(iter->second!=0) {
             fprintf(work, "%c\t%d\n", iter->first, iter->second);
