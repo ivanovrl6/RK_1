@@ -1,14 +1,13 @@
 
 #include "tasks_rk1.h"
 
-int Node::countNodes=0;
 void task_1(){
     WorkWithFile first;
     first.writeStatInfoToFile("sourcefile_task1.txt");
 }
 void task_2(){
-    convertDecToBin(-1);
-    writeToFile("result_task2.txt",convertDecToBin(-1));
+    convertDecToBin(-232);
+    writeToFile("result_task2.txt",convertDecToBin(-232));
 }
 void task_3(){
     convertBinToHex("1001000110101111");
@@ -28,7 +27,6 @@ void task_6(){
     }
 }
 void task_7(){
-    Node::countNodes=0;
     LinkedList test2;
     test2.insert(0,0);
     test2.insert(1,1);
@@ -39,15 +37,15 @@ void task_8(){
     StudentInfo testS;
     testS.addSubj("Eng");
     testS.addSubj("Math");
-    testS.addSubj("OPC++");
+    testS.addSubj("EngGraphics");
     testS.addMark("Eng",5,true);
     testS.addMark("Math",4,true);
-    testS.addMark("OPC++",5,true);
+    testS.addMark("EngGraphics",5,true);
     testS.getAverMark("Eng");
     testS.addMark("Eng",3,true);
     testS.getAverMark("Eng");
     testS.getAverMark("Math");
-    testS.getAverMark("OPC++");
+    testS.getAverMark("EngGraphics");
     testS.printInfoStudent(true);
 }
 int main(){

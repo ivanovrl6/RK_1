@@ -6,6 +6,7 @@
 #include "tasks_rk1.h"
 #include <list>
 #include <fstream>
+int Node::countNodes=0;
 void WorkWithFile::prepareTestFile(const char *fileName) {
     FILE *flog= fopen(fileName,"w");
     fprintf(flog,"%s","skdggsjdgklshjjewsjoiwj3835649209803-ierojgkfghdlh;!@#$%%^*(((^%%(\n");
@@ -107,41 +108,42 @@ void buildTree(int height){
 }
 
  char* convertDecToBin(int number){
-    char* string = new char [33];
+    char* string = new char [32];
      for (int i = 0; i <33 ; ++i) {
             string[i]='0'                                                                                                                                           ;
      }
+     string[31]='\0';
      if(number>=0) {
          for (int i = 32; i > 0; i--) {
              string[i] = number % 2 + '0';
              number /= 2;
          }
      }
-     if(number<0){
-         int chis =abs(number);
-         for (int i = 32; i > 0; i--) {
-             string[i] =  chis % 2 + '0';
-             chis /= 2;
-         }
-         for (int i = strlen(string); i>=0 ; i--) {
-             if(string[i]=='1'){
-                 string[i]='0';
+     else {
+         if (number < 0) {
+             int chis = abs(number);
+             for (int i = 32; i > 0; i--) {
+                 string[i] = chis % 2 + '0';
+                 chis /= 2;
              }
-             else {
-                 if(string[i]=='0') {
-                     string[i] = '1';
+             for (int i = strlen(string); i >= 0; i--) {
+                 if (string[i] == '1') {
+                     string[i] = '0';
+                 } else {
+                     if (string[i] == '0') {
+                         string[i] = '1';
+                     }
                  }
-             }
 
-         }
-         for (int i = strlen(string)-1; i >=0; i--) {
-             if(string[i]=='1') {
-                 string[i] = '0';
              }
-             else {
-                 if (string[i] == '0') {
-                     string[i] = '1';
-                     break;
+             for (int i = strlen(string) - 1; i >= 0; i--) {
+                 if (string[i] == '1') {
+                     string[i] = '0';
+                 } else {
+                     if (string[i] == '0') {
+                         string[i] = '1';
+                         break;
+                     }
                  }
              }
          }
@@ -277,6 +279,11 @@ void LinkedList::insert(int nameNode, int position) {
         temp->prev=sec_temp;
         sec_temp->nameNode=nameNode;
         sec_temp->next=temp;
+        Node* count=Head;
+        while (count->next!= nullptr){
+            count=count->next;
+        }
+        Tail=count;
     }
     else {
         if (position == 0) {
@@ -288,12 +295,18 @@ void LinkedList::insert(int nameNode, int position) {
             temp->prev=buff;
             Head->prev = nullptr;
             Node::countNodes++;
+            Node* count=Head;
+            while (count->next!= nullptr){
+                count=count->next;
+            }
+            Tail=count;
+
         }
     }
 }
 LinkedList::~LinkedList() {
 
-    for (int i = 0; i <Node::countNodes ; ++i) {
+    for (int i = 0; Head!= nullptr; ++i) {
         Node*temp=Head;
         Head=Head->next;
         delete temp;
