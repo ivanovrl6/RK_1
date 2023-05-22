@@ -50,7 +50,7 @@ private :
 
     std::map<std::string, std::pair<std::list<int> , float>> subjMark;
 public :
-    int addMark(const std::string& subjName, int mark, bool addSubj = false);
+    int addMark(const std::string& subjName, int mark);
     int addSubj(const std::string& subjName);
     float getAverMark(const std::string& subjName);
     void printInfoStudent(bool writeFile = false);

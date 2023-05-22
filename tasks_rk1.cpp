@@ -317,19 +317,20 @@ LinkedList::~LinkedList() {
     }
 }
 
-int StudentInfo::addMark(const std::string &subjName, int mark, bool addSubj) {
-    if(addSubj==true) {
-        for (auto iter = subjMark.begin(); iter != subjMark.end(); iter++) {
-            if (subjName == iter->first) {
-                iter->second.first.emplace_back(mark);
-                return 0;
-            }
+int StudentInfo::addMark(const std::string &subjName, int mark) {
+    for (auto iter = subjMark.begin(); iter != subjMark.end(); iter++) {
+        if (strcmp(subjName.c_str(),iter->first.c_str())==0) {
+            return 1;
         }
     }
-    if(addSubj==false) {
-        StudentInfo::addSubj(subjName);
-        return 2;
-    }
+    for (auto iter = subjMark.begin(); iter != subjMark.end(); iter++) {
+        if (subjName == iter->first) {
+            iter->second.first.emplace_back(mark);
+            return 0;
+        }
+    }s
+
+
 }
 int StudentInfo::addSubj(const std::string &subjName) {
     std::list<int> marks;
