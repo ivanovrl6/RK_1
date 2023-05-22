@@ -194,9 +194,19 @@ char* convertBinToHex(const char* binNum) {
 }
 
 void writeToFile(const char* fileName, int writeAppend, const char* hexNum, const char* binNum) {
-    FILE* flog= fopen(fileName,"w");
-    fprintf(flog,"%s\t%s",binNum,hexNum);
-    fclose(flog);
+    if(writeAppend==0) {
+        FILE *flog = fopen(fileName, "w");
+        fprintf(flog, "%s\t%s", binNum, hexNum);
+        fclose(flog);
+    }else{
+        if(writeAppend==1){
+            FILE *flog = fopen(fileName, "a");
+            fprintf(flog, "\n%s\t%s", binNum, hexNum);
+            fclose(flog);
+        }
+    }
+
+
 }
 
 void randFill(float* ar, int N){
