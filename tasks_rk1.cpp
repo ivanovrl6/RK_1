@@ -328,7 +328,7 @@ int StudentInfo::addMark(const std::string &subjName, int mark) {
             iter->second.first.emplace_back(mark);
             return 0;
         }
-    }s
+    }
 
 
 }

@@ -45,11 +45,11 @@ void task_8(){
     testS.addSubj("Eng");
     testS.addSubj("Math");
     testS.addSubj("EngGraphics");
-    testS.addMark("Eng",5,true);
-    testS.addMark("Math",4,true);
-    testS.addMark("EngGraphics",5,true);
+    testS.addMark("Eng",5);
+    testS.addMark("Math",4);
+    testS.addMark("EngGraphics",5);
     testS.getAverMark("Eng");
-    testS.addMark("Eng",3,true);
+    testS.addMark("Eng",3);
     testS.getAverMark("Eng");
     testS.getAverMark("Math");
     testS.getAverMark("EngGraphics");
