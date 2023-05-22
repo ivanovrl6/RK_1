@@ -37,6 +37,7 @@ private :
     Node* Head= nullptr;
     Node* Tail= nullptr;
 public :
+    LinkedList();
     void push_back(int nameNode);
     void writeToFileFromTail();
     void writeToFileFromHead();

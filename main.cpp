@@ -6,8 +6,8 @@ void task_1(){
     first.writeStatInfoToFile("sourcefile_task1.txt");
 }
 void task_2(){
-    convertDecToBin(-89);
-    writeToFile("result_task2.txt",convertDecToBin(-89));
+    convertDecToBin(89);
+    writeToFile("result_task2.txt",convertDecToBin(89));
 }
 void task_3(){
     convertBinToHex("1001000110101111");

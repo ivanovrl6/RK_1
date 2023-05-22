@@ -114,7 +114,7 @@ void buildTree(int height){
      }
      string[32]='\0';
      if(number>=0) {
-         for (int i = 32; i > 0; i--) {
+         for (int i = 31; i >=0; i--) {
              string[i] = number % 2 + '0';
              number /= 2;
          }
@@ -122,7 +122,7 @@ void buildTree(int height){
      else {
          if (number < 0) {
              int chis = abs(number);
-             for (int i = 32; i > 0; i--) {
+             for (int i = 31; i >=0; i--) {
                  string[i] = chis % 2 + '0';
                  chis /= 2;
              }
@@ -381,4 +381,7 @@ void StudentInfo::printInfoStudent(bool writeFile) {
     }
 }
 void StudentInfo::writeAllInfoToFile(){}
-
+LinkedList::LinkedList() {
+    this->Head= nullptr;
+    this->Tail= nullptr;
+}
