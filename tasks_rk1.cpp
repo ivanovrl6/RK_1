@@ -200,23 +200,27 @@ void writeToFile(const char* fileName, int writeAppend, const char* hexNum, cons
 }
 
 void randFill(float* ar, int N){
+    srand(NULL);
     for (int i = 0; i < N; ++i) {
         ar[i]=(float)(rand()%20);
     }
 }
 
-std::vector<std::pair<int,float>> averStr2DArray(float* ar, int colCount, int rowCount){
+std::vector<std::pair<int,float>> averStr2DArray(const float* ar, int colCount, int rowCount){
     std::vector<std::pair<int,float>> result;
+    float* new_ar = new float[colCount*rowCount];
+    for (int i = 0; i < colCount*rowCount; ++i) {
+        new_ar[i]=ar[i];
+    }
     for (int i = 0; i < rowCount; i++) {
         float aver = 0;
         float sum = 0;
-        randFill(ar,colCount);
         for (int k = 0; k < colCount; ++k) {
             sum += ar[k];
         }
         aver = sum / (float)colCount;
         result.emplace_back(i+1,aver);
-        ar=ar+colCount-1;
+        new_ar=new_ar+colCount-1;
     }
     FILE *flog = fopen("result_task5.txt","w");
     for (auto &iter :result) {

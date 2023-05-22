@@ -17,8 +17,15 @@ void task_4(){
     buildTree(6);
 }
 void task_5(){
-    float arr [10][20];
-    std::vector<std::pair<int,float>> test = averStr2DArray(arr[0],10,20);
+    int colCount=3;
+    int rowCount=3;
+    float* arr = new float[rowCount*colCount];
+    float* buffer=arr;
+    for (int i = 0; i <rowCount ; ++i) {
+        randFill(arr,colCount);
+        arr=arr+colCount-1;
+    }
+    std::vector<std::pair<int,float>> test = averStr2DArray(buffer,colCount,rowCount);
 }
 void task_6(){
     LinkedList test1;

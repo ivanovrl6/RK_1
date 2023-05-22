@@ -9,13 +9,13 @@
 #include <map>
 #include <cstring>
 #include <list>
-
+void randFill(float* arr,int N);
 void buildTree(int);
 char* convertDecToBin(int);
 char* convertBinToHex(const char*);
 void writeToFile(const char*, const char*);
 void writeToFile(const char*,int, const char*, const char*);
-std::vector<std::pair<int, float >> averStr2DArray ( float* , int, int);
+std::vector<std::pair<int, float >> averStr2DArray ( const float* , int, int);
 class WorkWithFile {
 private :
         char* dataOfFile=new char [300];
